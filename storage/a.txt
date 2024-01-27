@@ -1,1 +1,11 @@
-wbfmnv
+terating through a dictionary means, visiting each key-value pair in order. It means accessing a Python dictionary and traversing each key-value present in the dictionary. Iterating a dictionary is a very important task if you want to properly use a dictionary.
+
+There are multiple ways to iterate through a dictionary, we are discussing some generally used methods for dictionary iteration in Python which are the following:
+
+Iterate Python dictionary using build.keys() 
+Iterate through all values using .values()
+Looping through Python Dictionary using for loop
+Iterate key-value pair using items()
+Access key Using map() and dict.get
+Access key in Python Using zip()
+Access key Using Unpacking of Dict

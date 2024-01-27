@@ -2,7 +2,8 @@ import socket
 import threading
 import os.path
 import subprocess
-
+import re
+from collections import Counter, OrderedDict
 IP = socket.gethostbyname(socket.gethostname())
 PORT = 7000
 ADDR = (IP, PORT)
@@ -35,8 +36,12 @@ class server():
                 self.th.append(threading.Thread(target=self.updateFiles, daemon=True, args=(conn,)).start())
             elif(op=="list"):
                 self.th.append(threading.Thread(target=self.listFiles, daemon=True, args=(conn,)).start())
+            elif(op=="fwo"):
+                self.th.append(threading.Thread(target=self.Words, daemon=True, args=(conn,)).start())
             elif(op=="wc"):
                 self.th.append(threading.Thread(target=self.wordCount, daemon=True, args=(conn,)).start())
+
+      
         
     def upload(self,conn):
         filename= conn.recv(SIZE).decode(FORMAT)  
@@ -56,13 +61,12 @@ class server():
                 file.write(data)            
                 self.stream_lock.release()
                 conn.send("File data recived".encode(FORMAT))
-                file.close()                                  
+                file.close()   
         conn.close()
       
     def updateFiles(self,conn):
         filename = conn.recv(SIZE).decode(FORMAT)
         print(f"[NEW CONNECTION]  connected.") 
-        
         conn.send("Filename recived".encode(FORMAT))
         file_client = open("storage/"+filename, "w")
         while True:
@@ -123,6 +127,44 @@ class server():
             words = content.split()
             word_count = len(words)
         conn.send(str(word_count).encode(FORMAT))
+        conn.close()
+
+    def Words(self,conn):
+        order = conn.recv(SIZE).decode(FORMAT)
+        word_counter = Counter()
+        for files in os.listdir("storage/"):
+            if files.endswith(".txt"):
+                self.update_counter(word_counter,files)
+        a=OrderedDict(word_counter.most_common())
+        #print(a)
+        n=10
+        if(order=="dsc"):
+            for idx, k in enumerate(a):
+                if idx == n: break
+                print((k, a[k]))
+        elif(order=="asc"):
+            for idx, k in enumerate(a):
+                if len(a)-idx<10:
+                    print((k, a[k]))
+
+        conn.send(("Words found").encode(FORMAT))
+
+        conn.close()
+
+    def update_counter(self,word_counter, filename):
+        with open("storage/"+filename, 'r') as f:
+            try:
+               word_counter.update(re.findall('[a-z_]+', f.read().lower()))
+            except UnicodeDecodeError:
+                print("Warning: couldn't decode", filename)
+
+
+
+
+
+
+
+
         
 
 

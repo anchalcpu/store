@@ -38,5 +38,15 @@ def ls()->None:
     c.list()
 
 
+@app.command()
+def frequentwords(order:str=typer.Option("dsc",
+"--order",
+"-o",
+help="Choose dsc for most  and asc for least frequent words."))->None:
+    t_server = threading.Thread(target=x.starts, daemon=True).start()
+    c.frequency(order)
+
+
+
 def _version_callback(value: bool) -> None:
     return 

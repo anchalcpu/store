@@ -22,7 +22,6 @@ class client():
     
     def uploadFiles(self,filenames):
         #client=self.connect()
-        print(filenames,"ffd")
         for filename in filenames:
             client=self.connect()
             client.send(("add").encode(FORMAT))
@@ -92,6 +91,17 @@ class client():
         client.send(filename.encode(FORMAT))
         wc = client.recv(SIZE).decode(FORMAT)
         print("Total words:", wc)
+
+    def frequency(self,order):
+        client=self.connect()
+        client.send(("fwo").encode(FORMAT))
+        print(client.recv(SIZE).decode(FORMAT))
+        client.send(order.encode(FORMAT))
+        print(client.recv(SIZE).decode(FORMAT))
+
+        client.close()
+
+
 
 
 

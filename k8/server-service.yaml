@@ -10,4 +10,4 @@ spec:
   ports:
   - port: 5006
   selector:
-  k8s-app: k8s_python_sample_code
+  k8s-app: store

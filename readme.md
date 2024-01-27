@@ -48,16 +48,24 @@ python -m store --help
 * Excute below commands for required operations 
 
    For uploading files:
+    ```
     python -m store add <filename1> <filename2>
-
+    ```
    For update file:
+    ```
     python -m store update <filename>
-
+    ```
    For listing all saved files:
+    ```
     python -m store ls
+    ```
 
    For removing any file :
+    ```
     python -m store rm <filename>
-
+    ```
    For total number of words in any file:
+    ```
     python -m store wc <filename>
+    ```
+
