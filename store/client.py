@@ -64,10 +64,11 @@ class client():
         client=self.connect()
         client.send(("list").encode(FORMAT))
         t=client.recv(SIZE).decode(FORMAT)
-        cmd="ls storage/"
+        cmd="ls store/storage/"
         client.send((cmd).encode(FORMAT))
         msg = client.recv(SIZE).decode(FORMAT)
         print(f"[SERVER]: {msg}")
+        client.close()
 
 
     def remove(self,filename):
@@ -79,7 +80,7 @@ class client():
         #print(f"[SERVER]: {msg}")
         #client.send((filename).encode(FORMAT))
         #msg = client.recv(SIZE).decode(FORMAT)
-        #print(f"[SERVER]: {msg}")
+        print(f"[SERVER]: {msg}")
         stream_lock.acquire()
         stream_lock.release()
         client.close()

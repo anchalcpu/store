@@ -4,8 +4,10 @@ metadata:
   name: store-pv
   namespace: default
 spec:
+  storageClassName: standard
   capacity:
-  storage: 3Gi
+    storage: 3Gi
   accessModes:
   - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
   readOnly: false

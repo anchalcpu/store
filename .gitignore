@@ -7,5 +7,6 @@ ENV/
 env.bak/
 venv.bak/
 
+storage/
 
 __pycache__/

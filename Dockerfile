@@ -12,9 +12,9 @@ RUN pip install -r requirements.txt
 # copy the content of the local src directory to the working directory
 COPY store/ .
 
-VOLUME ["/store/storage"]
+VOLUME ["/store/store/storage"]
 
 #ENTRYPOINT ["python", "./cli.py"]
 
 # command to run on container start
-ENTRYPOINT [ "python", "./__main__.py" ]
+ENTRYPOINT [ "python", "store/__main__.py" ]

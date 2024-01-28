@@ -1,0 +1,11 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "false"
+  name: standard
+#any provisinor
+provisioner: kubernetes.io/
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+allowVolumeExpansion: true

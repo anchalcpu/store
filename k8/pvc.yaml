@@ -4,8 +4,9 @@ metadata:
   name: store-claim
   namespace: default
 spec:
+  storageClassName: standard
   accessModes:
-  - ReadWriteMany
+  - ReadWriteOnce
   resources:
-  requests:
-    storage: 2Gi
+    requests:
+      storage: 2Gi

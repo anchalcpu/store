@@ -68,4 +68,8 @@ python -m store --help
     ```
     python -m store wc <filename>
     ```
+    For frequent words in all file:
+    ```
+    pythom -m store freqentwords -o dsc/asc
+    ```
 

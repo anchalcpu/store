@@ -1,5 +1,5 @@
 
-from store import  __app_name__
+from store import   __app_name__
 from store import cli 
 
 def main():
