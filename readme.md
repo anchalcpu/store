@@ -72,4 +72,10 @@ python -m store --help
     ```
     pythom -m store freqentwords -o dsc/asc
     ```
+* Deploying in k8 cluster :
 
+1. First make secret for pulling image .use command:
+```
+kubectl create secret docker-registry docker-credentials --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email> -n <your-namespace>
+```
+2. Apply all files in k8 folder.

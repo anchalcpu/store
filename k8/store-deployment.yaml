@@ -14,12 +14,16 @@ spec:
         app: store
     spec:
       containers:
-      - name: store
-        image: store:latest
+      - name: store-container
+        image: anchal00/store:tagname
         imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 5009
-          name: store-container
+        imagePullSecrets:
+        - name: docker-credentials
+        env:
+        - name: port
+          value: 5006
+        - name: server-address
+          value: server-service
         volumeMounts:
         - mountPath: /store/storage
           name: store-storage

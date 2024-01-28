@@ -17,4 +17,4 @@ VOLUME ["/storage"]
 #ENTRYPOINT ["python", "./cli.py"]
 
 # command to run on container start
-ENTRYPOINT [ "python", "store/__main__.py" ]
+ENTRYPOINT [ "python", "__main__.py" ]

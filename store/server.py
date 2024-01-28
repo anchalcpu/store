@@ -2,12 +2,9 @@ import socket
 import threading
 import os.path
 import subprocess
-import re,sys
-from subprocess import check_output
+import re
 from collections import Counter, OrderedDict
-IP = socket.gethostbyname(socket.gethostname())
-PORT = 7000
-ADDR = (IP, PORT)
+
 SIZE = 2048
 FORMAT = "utf-8"
 

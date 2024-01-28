@@ -9,9 +9,6 @@ stream_lock = threading.Lock()
 class client():
     
     def __init__(self):
-        IP = socket.gethostbyname(socket.gethostname())
-        PORT = 7000
-        self.ADDR = (IP, PORT)
         #self.downloadPath=downloads
         self.uploadPath="storage/"
   
