@@ -9,7 +9,7 @@ The system is a server-client based cli app build with python 3.8
 * Next thing to do is to clone the repository:
 
     ```
-    $ git clone --branch=main 
+    $ git clone --branch=main https://github.com/anchalcpu/store.git
     ```
     ```
     $ cd store 
