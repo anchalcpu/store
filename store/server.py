@@ -43,7 +43,7 @@ class server():
         
     def upload(self,conn):
         filename= conn.recv(SIZE).decode(FORMAT)  
-        filename="store/storage/"+filename
+        filename="storage//"+filename
         print(f"[NEW CONNECTION]  connected.")
         conn.send("Filename recived".encode(FORMAT))
         if (os.path.isfile(filename)):
@@ -66,7 +66,7 @@ class server():
         filename = conn.recv(SIZE).decode(FORMAT)
         print(f"[NEW CONNECTION]  connected.") 
         conn.send("Filename recived".encode(FORMAT))
-        file_client = open("store/storage/"+filename, "w")
+        file_client = open("storage//"+filename, "w")
         while True:
             data = conn.recv(SIZE).decode(FORMAT)
             if  not data:
@@ -95,7 +95,7 @@ class server():
 
     def removeFiles(self,conn):
         filename = conn.recv(SIZE).decode(FORMAT)
-        filename="store/storage/"+filename
+        filename="storage//"+filename
 
         command="rm"+" "+filename
         print ("Command is:",command)
@@ -115,7 +115,7 @@ class server():
     
     def wordCount(self,conn):
         filename = conn.recv(SIZE).decode(FORMAT)
-        filename="store/storage/"+filename
+        filename="storage//"+filename
         with open(filename, 'r') as file:
             content = file.read()
             words = content.split()
