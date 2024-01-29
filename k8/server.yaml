@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-deployment
+spec:
+  selector:
+    matchLabels:
+      app: server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      containers:
+      - name: server
+        image: "anchal00/server:latest"
+        imagePullSecrets:
+        - name: docker-credentials
+        env:
+        - name: LISTEN_PORT
+          value: "5006"
+        volumeMounts:
+        - mountPath: /store/storage
+          name: store-storage
+      volumes:
+      - name: store-storage
+        persistentVolumeClaim:
+          claimName: store-claim
